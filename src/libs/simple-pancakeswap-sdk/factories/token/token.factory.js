@@ -1,5 +1,5 @@
 'use strict';
-Object.defineProperty(exports, '__esModule', {value: true});
+Object.defineProperty(exports, '__esModule', { value: true });
 exports.TokenFactory = void 0;
 const ethereum_multicall_1 = require('ethereum-multicall');
 const ethers_1 = require('ethers');
@@ -8,8 +8,10 @@ class TokenFactory {
   constructor(_tokenContractAddress, _ethersProvider) {
     this._tokenContractAddress = _tokenContractAddress;
     this._ethersProvider = _ethersProvider;
-    this._multicall = new ethereum_multicall_1.Multicall({
+    this._multicall = new Multicall({
       ethersProvider: this._ethersProvider.provider,
+      multicallCustomContractAddress: '0x4d76592D83585Cf00792057749B03f97964668E8',
+      tryAggregate: true,
     });
     this._erc20TokenContracy = this._ethersProvider.getContract(
       JSON.stringify(contract_context_1.ContractContext.erc20Abi),

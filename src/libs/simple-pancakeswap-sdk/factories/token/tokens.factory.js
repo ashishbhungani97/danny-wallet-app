@@ -8,8 +8,10 @@ const pancakeswap_error_1 = require("../../common/errors/pancakeswap-error.js");
 class TokensFactory {
     constructor(_ethersProvider) {
         this._ethersProvider = _ethersProvider;
-        this._multicall = new ethereum_multicall_1.Multicall({
+        this._multicall = new Multicall({
             ethersProvider: this._ethersProvider.provider,
+            multicallCustomContractAddress: '0x4d76592D83585Cf00792057749B03f97964668E8',
+            tryAggregate: true,
         });
     }
     /**
