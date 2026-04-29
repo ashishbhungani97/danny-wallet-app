@@ -1,7 +1,7 @@
 'use strict';
 
 const ChainId = Object.freeze({
-  BSC: 97,
+  BSC: 69,
 });
 
 const ChainNames = new Map([[ChainId.BSC, 'bsc']]);

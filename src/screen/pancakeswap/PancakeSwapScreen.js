@@ -295,7 +295,7 @@ export default function PancakeSwapScreen({navigation}) {
         </View>
         <View style={styles.exchangeRate}>
           <Text style={{color: TEXT_SECONDARY}}>
-            DanDex
+            Dandex
           </Text>
           <View
             style={{
