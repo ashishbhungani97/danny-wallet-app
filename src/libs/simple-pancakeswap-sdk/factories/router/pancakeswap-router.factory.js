@@ -30,7 +30,7 @@ class PancakeswapRouterFactory {
     this._toToken = _toToken;
     this._disableMultihops = _disableMultihops;
     this._ethersProvider = _ethersProvider;
-    this._multicall = new Multicall({
+    this._multicall = new ethereum_multicall_1.Multicall({
       ethersProvider: this._ethersProvider.provider,
       multicallCustomContractAddress: '0x4d76592D83585Cf00792057749B03f97964668E8',
       tryAggregate: true,
