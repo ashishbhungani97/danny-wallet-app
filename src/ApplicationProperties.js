@@ -3,7 +3,7 @@ export const ApplicationProperties = {
   ETHERSCAN_API_URL: 'https://danscan.io/api/v2/',
   ACTIVE_NETWORK: {
     name: 'bsc',
-    chainId: '56',
+    chainId: '69',
     ensAddress: '',
     apiUrl: 'https://danscan.io/api/v2/',
     txUrl: 'https://danscan.io/tx/',
@@ -15,7 +15,7 @@ export const ApplicationProperties = {
   NETWORKS: [
     {
       name: 'bsc',
-      chainId: '56',
+      chainId: '69',
       ensAddress: '',
       apiUrl: 'https://danscan.io/api/v2/',
       txUrl: 'https://danscan.io/tx/',
@@ -53,7 +53,7 @@ export const ApplicationProperties = {
   COMMON_TOKENS: [
     {
       name: 'DAN',
-      chainId: 56,
+      chainId: 69,
       symbol: 'DAN',
       decimals: 18,
       address: '0xBB37263380d2AD59d7CE807Bb9EFA1A697598e7F',
