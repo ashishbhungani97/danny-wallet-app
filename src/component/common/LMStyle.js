@@ -1,0 +1,34 @@
+export const black = '#000000';
+export const darkGray = '#1E1E1E';
+export const gray = '#808080';
+export const lightGray = '#CCCCCC';
+export const lightestGray = '#EFEFEF';
+export const white = '#FFFFFF';
+// export const TEXT_SECONDARY = '#101010';
+export const TEXT_SECONDARY = '#A0A0A0';
+export const TEXT_MUTED = '#6B6B6B';
+export const green = '#4CD080';
+export const darkGreen = '#105D38';
+export const lightGreen = '#c5e1a5';
+export const red = '#d73a4a';
+export const lightRed = '#ef9a9a';
+export const orange = '#FFA500';
+export const primaryGradientStart = 'rgba(53, 64, 239, 1)';
+export const primaryGradientEnd = 'rgba(49, 130, 206, 1)';
+export const primaryGradientColors = [primaryGradientStart, primaryGradientEnd];
+export const primaryGradientStartPoint = {x: 0, y: 0};
+export const primaryGradientEndPoint = {x: 1, y: 1};
+export const gradientFallback = primaryGradientEnd;
+export const primary = white;
+export const secondary = white;
+
+export const statusBar = primary;
+export const defaultBackground = black;
+export const secondBackground = darkGreen;
+export const splashscreenBackground = darkGray;
+
+export const success = green;
+export const successAlt = lightGreen;
+export const error = red;
+export const errorAlt = lightRed;
+export const pending = gray;
