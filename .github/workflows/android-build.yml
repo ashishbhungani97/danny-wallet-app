@@ -48,7 +48,7 @@ jobs:
 
       # ── 5. Install JS dependencies ──────────────────────────────────────────
       - name: Install dependencies
-        run: npm ci
+        run: npm install --legacy-peer-deps
 
       # ── 6. (Optional) Run lint & tests ─────────────────────────────────────
       # Uncomment the lines below if you want lint/test gates before build
