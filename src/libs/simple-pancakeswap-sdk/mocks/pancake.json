@@ -11,7 +11,7 @@
       "name": "Bridge USDT",
       "symbol": "USDT",
       "address": "0x3A07aBE1Abce54838550A1d2aec4CBd961a39084",
-      "chainId": 56,
+      "chainId": 69,
       "decimals": 18,
       "logoURI": "https://tokens.pancakeswap.finance/images/0x55d398326f99059fF775485246999027B3197955.png"
     },
@@ -19,7 +19,7 @@
       "name": "Wrapped DAN",
       "symbol": "WDAN",
       "address": "0xBB37263380d2AD59d7CE807Bb9EFA1A697598e7F",
-      "chainId": 56,
+      "chainId": 69,
       "decimals": 18,
       "logoURI": "https://alchemy.mypinata.cloud/ipfs/bafkreie27igwnkm4kcrfxxgpl7gwigho5hullgiczzacxh4hofkfg6hxda"
     },
@@ -27,7 +27,7 @@
       "name": "Unicorn",
       "symbol": "UNI",
       "address": "0x82784a1EF9d619BC6A9B66a8eB72926ED4cc1A58",
-      "chainId": 56,
+      "chainId": 69,
       "decimals": 18,
       "logoURI": "https://alchemy.mypinata.cloud/ipfs/bafybeie4fjefbxl26cfopnx4vfthij6gubpziyj6g2bqyjskhi4iwn6ebi"
     },
@@ -35,7 +35,7 @@
       "name": "Sandee Coin",
       "symbol": "SDC",
       "address": "0x946447082dfaCdeAF42bf40d950450dc593077Ce",
-      "chainId": 56,
+      "chainId": 69,
       "decimals": 18,
       "logoURI": "https://alchemy.mypinata.cloud/ipfs/bafybeicc6ikjbnxisvb6h7g4tsrfsiyx7enxspt474urzjlagekgagssjq"
     },
@@ -43,7 +43,7 @@
       "name": "Hmoob Coin",
       "symbol": "HMOOB",
       "address": "0xD84b7c96c23BAb37b585Bac98DFE6651D30F6c11",
-      "chainId": 56,
+      "chainId": 69,
       "decimals": 18,
       "logoURI": "https://alchemy.mypinata.cloud/ipfs/bafybeiflq5xdcxi7ugtef5wrnh5tf7lr6dy2gnn2ge3kv7j7c3fzzd4ubm"
     },
@@ -51,7 +51,7 @@
       "name": "BabyDan",
       "symbol": "BBD",
       "address": "0x8Ad224cE3d76aDF49b101635451Ad697d877b63a",
-      "chainId": 56,
+      "chainId": 69,
       "decimals": 18,
       "logoURI": "https://alchemy.mypinata.cloud/ipfs/bafkreidjbu7z2fu6wbuhzunuqrsalmqcolitgqackfz5fvurdvemrc7osa"
     },
@@ -59,7 +59,7 @@
       "name": "Daisy",
       "symbol": "DS",
       "address": "0xA7eC88a4ca504f003f1337482Eb72904C1da883A",
-      "chainId": 56,
+      "chainId": 69,
       "decimals": 18,
       "logoURI": "https://alchemy.mypinata.cloud/ipfs/bafybeibbjnkwiylptdkqbpvlyw7opbba2pi6ryeih2n7rkagkegpzlbbrq"
     },
@@ -67,7 +67,7 @@
       "name": "Meme",
       "symbol": "ME",
       "address": "0xb1589bbeaC1149068Da8a247950Cf32055a2b0Cd",
-      "chainId": 56,
+      "chainId": 69,
       "decimals": 18,
       "logoURI": "https://alchemy.mypinata.cloud/ipfs/QmX6yp9UdJpSCfetvjNUA4b38EcmCoLWKiHd9c72PN6wC9"
     },
@@ -75,7 +75,7 @@
       "name": "Yut Coin",
       "symbol": "YUT",
       "address": "0x76B9a964DCa7a82007Bc7Ede722399e3CfC5bAfe",
-      "chainId": 56,
+      "chainId": 69,
       "decimals": 18,
       "logoURI": "https://alchemy.mypinata.cloud/ipfs/bafkreifbva2txejbitvdzbkw7k4sq7esur45upe42stnihb33m2u4ddloi"
     },
@@ -83,7 +83,7 @@
       "name": "LFC Coin",
       "symbol": "LFC",
       "address": "0x9d73FA1c481bc724c8e2f1B47323a79ce26ae0C1",
-      "chainId": 56,
+      "chainId": 69,
       "decimals": 18,
       "logoURI": "https://alchemy.mypinata.cloud/ipfs/bafkreicfvdzvnqpilml2ofnkxblr2udcycq25tpiuekgp7aworoktqbqw4"
     },
@@ -91,7 +91,7 @@
       "name": "Fastzy",
       "symbol": "FZ",
       "address": "0xC94A9eDb5F27D9379A783Ea68831F67FCe7F9475",
-      "chainId": 56,
+      "chainId": 69,
       "decimals": 18,
       "logoURI": "https://alchemy.mypinata.cloud/ipfs/bafybeiakgd7vufpmxxuet4jmbutkzzagtpgicyn54uuz6pe2gcbuwea5ry"
     },
@@ -99,7 +99,7 @@
       "name": "RescueCoin",
       "symbol": "RESC",
       "address": "0x5B8AC8164eF04929712F16EB2923a4eF6b668e26",
-      "chainId": 56,
+      "chainId": 69,
       "decimals": 18,
       "logoURI": "https://alchemy.mypinata.cloud/ipfs/bafybeibti4ccnfrjajgt5nj7x42hswj2x47fbdnwj2yvm3t7zls7j3s7au"
     },
@@ -107,7 +107,7 @@
       "name": "YA COIN",
       "symbol": "YA",
       "address": "0x14fdfac4dcB39c6063f00B146ED1753B2d06e593",
-      "chainId": 56,
+      "chainId": 69,
       "decimals": 18,
       "logoURI": "https://alchemy.mypinata.cloud/ipfs/bafybeieejpxjlz62e2g5vjgxk4xkxlymps4naelxym4ipgf5wnluegiuai"
     },
@@ -115,7 +115,7 @@
       "name": "Rescue Loyal",
       "symbol": "RLY",
       "address": "0xB25CB8588D2688716bB307af27A403a07064a665",
-      "chainId": 56,
+      "chainId": 69,
       "decimals": 18,
       "logoURI": "https://alchemy.mypinata.cloud/ipfs/bafybeih46chzyba3hccy2jclemcvi6p6bbmba37bqruc3q43mybmirgtce"
     },
@@ -123,7 +123,7 @@
       "name": "GMX COIN",
       "symbol": "GMX",
       "address": "0x7d1CA6242A7A9221919e287FFCDdAeBBB5Cd7B70",
-      "chainId": 56,
+      "chainId": 69,
       "decimals": 18,
       "logoURI": "https://alchemy.mypinata.cloud/ipfs/bafkreiaqetlvv6dxb4epgpdbrlxvxfb754p3pglts6kp2hlzgmu6zmmvva"
     },
@@ -131,7 +131,7 @@
       "name": "ORIGYN",
       "symbol": "OGY",
       "address": "0x8Fbf44872151D3079722D29A65daff9B645DBA57",
-      "chainId": 56,
+      "chainId": 69,
       "decimals": 18,
       "logoURI": "https://alchemy.mypinata.cloud/ipfs/bafkreignekgnbqe4l6aagicxpwubug6e4evmsfxrzjd3jlwa6q4ld55vxe"
     }
