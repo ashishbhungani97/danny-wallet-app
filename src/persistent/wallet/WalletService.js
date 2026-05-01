@@ -70,24 +70,55 @@ async function getTransactions(address) {
 }
 
 async function getFeeSuggestions(gasLimit) {
-  const data = await CommonAPI.get(`stats`);
+  try {
+    const data = await CommonAPI.get(`stats`);
 
-  // fallback values (Blockscout doesn't give oracle like Etherscan)
-  const gasPrice = 1e9; // 1 Gwei fallback or fetch via RPC
+    const gasPrices = data?.gas_prices;
 
-  return {
-    safeGasPrice: await calculateFee(gasPrice, gasLimit),
-    proposeGasPrice: await calculateFee(gasPrice * 1.2, gasLimit),
-    fastGasPrice: await calculateFee(gasPrice * 1.5, gasLimit),
-  };
+    if (!gasPrices) {
+      throw new Error('No gas prices from Blockscout');
+    }
+
+    return {
+      safeGasPrice: {
+        ...(await calculateFee(gasPrices.slow, gasLimit)),
+        key: 1,
+      },
+      proposeGasPrice: {
+        ...(await calculateFee(gasPrices.average, gasLimit)),
+        key: 2,
+      },
+      fastGasPrice: {
+        ...(await calculateFee(gasPrices.fast, gasLimit)),
+        key: 3,
+      },
+    };
+  } catch (err) {
+    console.warn('Gas API failed, fallback used:', err);
+
+    // fallback (1 gwei)
+    return {
+      safeGasPrice: await calculateFee(1, gasLimit),
+      proposeGasPrice: await calculateFee(1.2, gasLimit),
+      fastGasPrice: await calculateFee(1.5, gasLimit),
+    };
+  }
 }
 
-async function calculateFee(gasPrice, gasLimit) {
-  const price = BigNumber.from(convert(gasPrice / 10, 'gwei', 'wei'));
-  let etherFee = price.mul(BigNumber.from(gasLimit));
-  etherFee = await EtherUtilModule.formatUnits(etherFee.toString());
+async function calculateFee(gasPriceGwei, gasLimit) {
+  // convert Gwei → Wei
+  const priceWei = BigNumber.from(
+    convert(gasPriceGwei.toString(), 'gwei', 'wei')
+  );
+
+  const totalFeeWei = priceWei.mul(BigNumber.from(gasLimit));
+
+  const etherFee = await EtherUtilModule.formatUnits(
+    totalFeeWei.toString()
+  );
+
   return {
-    wei: price,
+    wei: priceWei.toString(),
     ether: etherFee,
   };
 }
