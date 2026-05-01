@@ -20,7 +20,7 @@ async function trade(ethAddress, from, to, value) {
       toTokenContractAddress: to,
       // the ethereum address of the user using this part of the dApp
       ethereumAddress: ethAddress,
-      providerUrl: 'https://mainnet.danscan.io/',
+      providerUrl: 'https://mainnet.danscan.io',
       settings: new PancakeswapPairSettings({
         // if not supplied it will use `0.005` which is 0.5%
         // please pass it in as a full number decimal so 0.7%

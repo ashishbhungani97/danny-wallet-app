@@ -3,7 +3,7 @@ Object.defineProperty(exports, '__esModule', {value: true});
 exports.EthersProvider = void 0;
 const ethers_1 = require('ethers');
 class EthersProvider {
-  constructor(providerUrl = 'https://mainnet.danscan.io/') {
+  constructor(providerUrl = 'https://mainnet.danscan.io') {
     this._ethersProvider = new ethers_1.providers.StaticJsonRpcProvider(
       providerUrl,
     );

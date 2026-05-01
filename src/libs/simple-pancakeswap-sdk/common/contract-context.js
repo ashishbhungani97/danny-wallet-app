@@ -14,7 +14,7 @@ ContractContext.factoryAddress = '0x6F01adf8E45602Aa327B8BA986f37180A1350f3a';
 /**
  * The pancakeswap pair address
  */
-ContractContext.pairAddress = '0x1bf0EF526C8255Bc1E92331456d8EF06d2FcB189';
+ContractContext.pairAddress = '0x6F01adf8E45602Aa327B8BA986f37180A1350f3a';
 /**
  * PancakeSwap v2 router
  */
