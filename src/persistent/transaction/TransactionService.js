@@ -1,7 +1,7 @@
 import React from 'react';
 import TransactionUtil from './TransactionUtil';
 import CommonAPI from '../../module/api/CommonAPI';
-import { ApplicationProperties } from '../../ApplicationProperties';
+import {ApplicationProperties} from '../../ApplicationProperties';
 import axios from 'axios';
 
 export const TransactionService = {
@@ -9,7 +9,7 @@ export const TransactionService = {
   list,
 };
 
-async function add({ wallet, to, value, gasPrice, gasLimit }) {
+async function add({wallet, to, value, gasPrice, gasLimit}) {
   const transaction = await TransactionUtil.createTransaction(
     to,
     value,

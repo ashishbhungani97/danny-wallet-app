@@ -142,31 +142,16 @@ function getWallets() {
 
 function sendTransaction(wallet, tx) {
   return async dispatch => {
-    try {
-      const response = await WalletService.sendTransaction(wallet, tx);
-
-      // 🔥 IMPORTANT: treat hash as success
-      if (response?.data?.hash) {
-        // optional wait (don't fail if it errors)
-        try {
-          await wallet.provider.waitForTransaction(response.data.hash);
-        } catch (e) {
-          console.warn('waitForTransaction failed but tx is sent');
-        }
-
-        dispatch(
-          setActiveWalletSuccess({
-            balance: await WalletModule.getBalance(wallet),
-          }),
-        );
-
-        return { success: true, data: response.data };
-      }
-
-      return { success: false, data: response.data };
-    } catch (err) {
-      return { success: false, data: err };
+    const {success, data} = await WalletService.sendTransaction(wallet, tx);
+    if (success) {
+      await wallet.provider.waitForTransaction(data.hash);
+      dispatch(
+        setActiveWalletSuccess({
+          balance: await WalletModule.getBalance(wallet),
+        }),
+      );
     }
+    return {success, data};
   };
 }
 

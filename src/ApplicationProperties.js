@@ -6,7 +6,7 @@ export const ApplicationProperties = {
     chainId: '69',
     ensAddress: '',
     apiUrl: 'https://danscan.io/api/v2/',
-    api2Url: 'https://danscan.io/api/v2/',
+    api2Url: 'https://danscan.io',
 
 
     txUrl: 'https://danscan.io/tx/',
