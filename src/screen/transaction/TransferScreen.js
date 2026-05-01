@@ -81,7 +81,9 @@ export default function TransferScreen({navigation, route, lang}) {
   const onSubmit = async ({recipientAddress, amount}) => {
     const tx = {
       to: recipientAddress,
-      value: parseEther(amount.toString())
+      value: parseEther(amount.toString()),
+      gasPrice: BigNumber.from(selectedGas.wei),
+      gasLimit: BigNumber.from(gasLimit),
     };
     LMLoading.show();
     dispatch(WalletAction.sendTransaction(rawActiveWallet, tx)).then(data => {
@@ -218,7 +220,7 @@ export default function TransferScreen({navigation, route, lang}) {
               defaultValue={''}
             />
           </View>
-          {/* <Text style={{fontWeight: 'bold', color: white}}>
+          <Text style={{fontWeight: 'bold', color: white}}>
             {lang.transactionFee}
           </Text>
           {!_.isEmpty(gasTracker) && (
@@ -290,7 +292,7 @@ export default function TransferScreen({navigation, route, lang}) {
                 </TouchableOpacity>
               </View>
             </>
-          )} */}
+          )}
         </View>
         <View style={[styles.buttonsContainer, {marginBottom: 5}]}>
           <LMButton label={lang.confirm} onPress={handleSubmit(onSubmit)} />

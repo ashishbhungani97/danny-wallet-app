@@ -1,14 +1,15 @@
 import React from 'react';
 import TransactionUtil from './TransactionUtil';
 import CommonAPI from '../../module/api/CommonAPI';
-import {ApplicationProperties} from '../../ApplicationProperties';
+import { ApplicationProperties } from '../../ApplicationProperties';
+import axios from 'axios';
 
 export const TransactionService = {
   add,
   list,
 };
 
-async function add({wallet, to, value, gasPrice, gasLimit}) {
+async function add({ wallet, to, value, gasPrice, gasLimit }) {
   const transaction = await TransactionUtil.createTransaction(
     to,
     value,
@@ -31,12 +32,24 @@ async function add({wallet, to, value, gasPrice, gasLimit}) {
 }
 
 async function list(params) {
-  const {address} = params;
-  const {status, message, result} = await CommonAPI.get(
-    'api?module=account&action=txlist&address=' +
-      address +
-      '&startblock=0&endblock=99999999&page=1&offset=10&sort=desc&apikey=' +
-      ApplicationProperties.ETHERSCAN_API_KEY,
+  const { address } = params;
+
+  const { data } = await axios.get(
+    `${ApplicationProperties.ACTIVE_NETWORK.api2Url}/api`,
+    {
+      params: {
+        module: 'account',
+        action: 'txlist',
+        address,
+        startblock: 0,
+        endblock: 99999999,
+        page: 1,
+        offset: 10,
+        sort: 'desc',
+        // ❌ no apikey needed for Blockscout
+      },
+    }
   );
-  return status === '1' ? result : [];
+
+  return data.status === '1' ? data.result : [];
 }

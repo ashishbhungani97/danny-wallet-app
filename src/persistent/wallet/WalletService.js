@@ -38,74 +38,50 @@ async function sendTransaction(wallet, tx) {
     data: transaction,
   };
 }
-async function getTransactions(address) {
-  const {status, message, result} = await CommonAPI.get(
-    'api?module=account&action=txlist&address=' +
-      address +
-      '&startblock=0&endblock=99999999&page=1&offset=10&sort=desc&apikey=' +
-      ApplicationProperties.ETHERSCAN_API_KEY,
-  );
-  const data = status === '1' ? result : [];
 
-  data.map(transaction => {
-    transaction.sentOrReceived =
-      transaction.from.toUpperCase() == address.toUpperCase()
-        ? 'Sent'
-        : 'Received';
-    transaction.status =
-      transaction.isError == '1'
-        ? 'Cancelled'
-        : transaction.txreceipt_status == '0'
-        ? 'Pending'
-        : 'Confirmed';
-    transaction.color =
-      transaction.isError == '1'
-        ? red
-        : transaction.txreceipt_status == '0'
-        ? orange
-        : green;
-    transaction.icon =
-      transaction.from.toUpperCase() == address.toUpperCase()
-        ? require('../../../assets/send.png')
-        : require('../../../assets/receive.png');
-    transaction.date = moment(transaction.timeStamp, 'X').format(
-      'MMMM Do YYYY, h:mm:ss a',
-    );
-    transaction.etherValue = convert(transaction.value, 'wei').ether;
-    transaction.etherGasValue = convert(
-      transaction.gasPrice * transaction.gas,
-      'wei',
-    ).ether;
+async function getTransactions(address) {
+  const { items } = await CommonAPI.get(`addresses/${address}/transactions`);
+
+  const data = items || [];
+
+  return data.map(transaction => {
+    const isSent =
+      transaction.from?.hash?.toUpperCase() === address.toUpperCase();
+
+    return {
+      ...transaction,
+      sentOrReceived: isSent ? 'Sent' : 'Received',
+      status:
+        transaction.status === 'ok'
+          ? 'Confirmed'
+          : transaction.status === 'error'
+          ? 'Failed'
+          : 'Pending',
+      date: moment(transaction.timestamp).format(
+        'MMMM Do YYYY, h:mm:ss a',
+      ),
+      etherValue: convert(transaction.value, 'wei').ether,
+      etherGasValue: convert(
+        transaction.gas_price * transaction.gas_used,
+        'wei',
+      ).ether,
+    };
   });
-  return data;
 }
 
 async function getFeeSuggestions(gasLimit) {
-  const {status, message, result} = await CommonAPI.get(
-    'api?module=gastracker&action=gasoracle&apikey=' +
-      ApplicationProperties.ETHERSCAN_API_KEY,
-  );
-  if (status === '1') {
-    const safeGasPrice = result.SafeGasPrice;
-    const proposeGasPrice = result.ProposeGasPrice;
-    const fastGasPrice = result.FastGasPrice;
-    return {
-      safeGasPrice: {...(await calculateFee(safeGasPrice, gasLimit)), key: 1},
-      proposeGasPrice: {
-        ...(await calculateFee(proposeGasPrice, gasLimit)),
-        key: 2,
-      },
-      fastGasPrice: {...(await calculateFee(fastGasPrice, gasLimit)), key: 3},
-    };
-  }
-  return status === '1'
-    ? result
-    : {
-        safeGasPrice: 0,
-        proposeGasPrice: 0,
-        fastGasPrice: 0,
-      };
+  const data = await CommonAPI.get(`stats`);
+
+  // fallback values (Blockscout doesn't give oracle like Etherscan)
+  const gasPrice = 1e9; // 1 Gwei fallback or fetch via RPC
+
+  return {
+    safeGasPrice: await calculateFee(gasPrice, gasLimit),
+    proposeGasPrice: await calculateFee(gasPrice * 1.2, gasLimit),
+    fastGasPrice: await calculateFee(gasPrice * 1.5, gasLimit),
+  };
 }
+
 async function calculateFee(gasPrice, gasLimit) {
   const price = BigNumber.from(convert(gasPrice / 10, 'gwei', 'wei'));
   let etherFee = price.mul(BigNumber.from(gasLimit));

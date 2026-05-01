@@ -6,6 +6,9 @@ export const ApplicationProperties = {
     chainId: '69',
     ensAddress: '',
     apiUrl: 'https://danscan.io/api/v2/',
+    api2Url: 'https://danscan.io/api/v2/',
+
+
     txUrl: 'https://danscan.io/tx/',
     displayName: 'Danny Mainnet',
     readonly: true,
