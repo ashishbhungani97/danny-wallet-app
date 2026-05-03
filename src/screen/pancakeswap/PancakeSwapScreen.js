@@ -20,7 +20,7 @@ import LMTokenIcon from '../../component/common/LMTokenIcon';
 import {AssetAction} from '../../persistent/asset/AssetAction';
 import PancakeswapModule from '../../module/pancakeswap/PancakeswapModule';
 
-export default function PancakeSwapScreen({navigation}) {
+export default function PancakeSwapScreen({navigation, route, lang}) {
   const dispatch = useDispatch();
   const {language} = useSelector(state => state.LanguageReducer);
   const {activeWallet, rawActiveWallet} = useSelector(
@@ -86,6 +86,7 @@ export default function PancakeSwapScreen({navigation}) {
           _.toNumber(exchange.expectedConvertQuote) / _.toNumber(finalValue),
         );
         setError('Swap');
+        reset();
       } else {
         setError(exchange);
       }
@@ -119,7 +120,7 @@ export default function PancakeSwapScreen({navigation}) {
       await init();
     }
     fetchData();
-  }, []);
+  }, [reset]);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -294,9 +295,7 @@ export default function PancakeSwapScreen({navigation}) {
           </LMTouchableOpacity>
         </View>
         <View style={styles.exchangeRate}>
-          <Text style={{color: TEXT_SECONDARY}}>
-            Dandex
-          </Text>
+          <Text style={{color: TEXT_SECONDARY}}>Dandex</Text>
           <View
             style={{
               alignItems: 'center',

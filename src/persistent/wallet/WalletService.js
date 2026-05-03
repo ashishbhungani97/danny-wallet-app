@@ -40,7 +40,7 @@ async function sendTransaction(wallet, tx) {
 }
 
 async function getTransactions(address) {
-  const { items } = await CommonAPI.get(`addresses/${address}/transactions`);
+  const {items} = await CommonAPI.get(`addresses/${address}/transactions`);
 
   const data = items || [];
 
@@ -57,9 +57,7 @@ async function getTransactions(address) {
           : transaction.status === 'error'
           ? 'Failed'
           : 'Pending',
-      date: moment(transaction.timestamp).format(
-        'MMMM Do YYYY, h:mm:ss a',
-      ),
+      date: moment(transaction.timestamp).format('MMMM Do YYYY, h:mm:ss a'),
       etherValue: convert(transaction.value, 'wei').ether,
       etherGasValue: convert(
         transaction.gas_price * transaction.gas_used,
@@ -71,7 +69,7 @@ async function getTransactions(address) {
 
 async function getFeeSuggestions(gasLimit) {
   try {
-    const data = await CommonAPI.get(`stats`);
+    const data = await CommonAPI.get('stats');
 
     const gasPrices = data?.gas_prices;
 
@@ -108,14 +106,12 @@ async function getFeeSuggestions(gasLimit) {
 async function calculateFee(gasPriceGwei, gasLimit) {
   // convert Gwei → Wei
   const priceWei = BigNumber.from(
-    convert(gasPriceGwei.toString(), 'gwei', 'wei')
+    convert(gasPriceGwei.toString(), 'gwei', 'wei'),
   );
 
   const totalFeeWei = priceWei.mul(BigNumber.from(gasLimit));
 
-  const etherFee = await EtherUtilModule.formatUnits(
-    totalFeeWei.toString()
-  );
+  const etherFee = await EtherUtilModule.formatUnits(totalFeeWei.toString());
 
   return {
     wei: priceWei.toString(),

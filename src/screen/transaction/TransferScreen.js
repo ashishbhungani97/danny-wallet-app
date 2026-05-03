@@ -36,7 +36,7 @@ import LMToast from '../../component/common/LMToast';
 import LMGradient from '../../component/common/LMGradient';
 
 yup.addMethod(yup.string, 'isAddress', function (errorMessage) {
-  return this.test(`test-address`, errorMessage, function (value) {
+  return this.test('test-address', errorMessage, function (value) {
     const {path, createError} = this;
     return utils.isAddress(value) || createError({path, message: errorMessage});
   });
@@ -93,9 +93,6 @@ export default function TransferScreen({navigation, route, lang}) {
           title: lang.complete,
           message: lang.yourTransactionHasBeenSent,
           buttontext: lang.ok,
-          callback: () => {
-            navigation.goBack();
-          },
         });
       } else {
         LMToast.popupError({
@@ -158,7 +155,7 @@ export default function TransferScreen({navigation, route, lang}) {
                   onBlur={onBlur}
                   onChangeText={value => onChange(value)}
                   value={value}
-                  error={errors['senderAddress']}
+                  error={errors.senderAddress}
                   placeholder={lang.yourAddress}
                   editable={false}
                 />
@@ -176,7 +173,7 @@ export default function TransferScreen({navigation, route, lang}) {
                   onBlur={onBlur}
                   onChangeText={value => onChange(value)}
                   value={value}
-                  error={errors['senderBalance']}
+                  error={errors.senderBalance}
                   placeholder={lang.yourBalance}
                   editable={false}
                 />
@@ -194,7 +191,7 @@ export default function TransferScreen({navigation, route, lang}) {
                   onBlur={onBlur}
                   onChangeText={value => onChange(value)}
                   value={value}
-                  error={errors['recipientAddress']}
+                  error={errors.recipientAddress}
                   placeholder={lang.recipientAddress}
                 />
               )}
@@ -211,7 +208,7 @@ export default function TransferScreen({navigation, route, lang}) {
                   onBlur={onBlur}
                   onChangeText={value => onChange(value)}
                   value={value}
-                  error={errors['amount']}
+                  error={errors.amount}
                   placeholder={lang.amount}
                   keyboardType="numeric"
                 />
@@ -232,8 +229,7 @@ export default function TransferScreen({navigation, route, lang}) {
                     setSelectedGas(gasTracker.safeGasPrice);
                   }}>
                   {selectedGas.key == 1 && (
-                    <View
-                      style={[styles.selected, {backgroundColor: red}]}></View>
+                    <View style={[styles.selected, {backgroundColor: red}]} />
                   )}
                   <View style={styles.itemContent}>
                     <Text style={{fontWeight: 'bold', color: white}}>
@@ -254,10 +250,8 @@ export default function TransferScreen({navigation, route, lang}) {
                   }}>
                   {selectedGas.key == 2 && (
                     <View
-                      style={[
-                        styles.selected,
-                        {backgroundColor: orange},
-                      ]}></View>
+                      style={[styles.selected, {backgroundColor: orange}]}
+                    />
                   )}
 
                   <View style={styles.itemContent}>

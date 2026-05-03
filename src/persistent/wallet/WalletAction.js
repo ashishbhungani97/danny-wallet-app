@@ -142,8 +142,8 @@ function getWallets() {
 
 function sendTransaction(wallet, tx) {
   return async dispatch => {
-    const {success, data} = await WalletService.sendTransaction(wallet, tx);
-    if (success) {
+    const {data} = await WalletService.sendTransaction(wallet, tx);
+    if (data?.hash) {
       await wallet.provider.waitForTransaction(data.hash);
       dispatch(
         setActiveWalletSuccess({
@@ -151,7 +151,7 @@ function sendTransaction(wallet, tx) {
         }),
       );
     }
-    return {success, data};
+    return {success: data?.hash, data};
   };
 }
 

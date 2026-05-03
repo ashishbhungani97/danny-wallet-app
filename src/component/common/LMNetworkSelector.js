@@ -1,7 +1,6 @@
 import React, {useEffect} from 'react';
-import {StyleSheet, Text, TouchableOpacity} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, Image} from 'react-native';
 import LMSelect from './LMSelect';
-import LMIcon from './LMIcon';
 import {useDispatch, useSelector} from 'react-redux';
 import LMLoading from './LMLoading';
 import {NetworkAction} from '../../persistent/network/NetworkAction';
@@ -9,8 +8,8 @@ import {white} from './LMStyle';
 
 export default function LMNetworkSelector({...rest}) {
   const {activeNetwork, networks} = useSelector(state => state.NetworkReducer);
-  useEffect(() => {}, []);
   const dispatch = useDispatch();
+
   return (
     <TouchableOpacity
       style={styles.container}
@@ -26,16 +25,29 @@ export default function LMNetworkSelector({...rest}) {
           selected: activeNetwork,
         });
       }}>
-      <LMIcon hash={activeNetwork.displayName} size={18} />
+      <Image
+        source={{
+          uri: 'https://alchemy.mypinata.cloud/ipfs/bafkreifp7a2j7tpyqvvdyw5go234t6yabkkhmrckiqovffbpcs2272u6ui',
+        }}
+        style={styles.icon}
+        resizeMode="contain"
+      />
+
       <Text style={{fontSize: 12, color: white}}>
         {activeNetwork.displayName}
       </Text>
     </TouchableOpacity>
   );
 }
+
 const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  icon: {
+    width: 18,
+    height: 18,
+    marginBottom: 4,
   },
 });

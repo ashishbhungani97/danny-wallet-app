@@ -39,15 +39,15 @@ export default function MainScreen({navigation, route}) {
 
   useEffect(() => {
     async function fetchData() {
-      dispatch(AssetAction.list(activeWallet, activeNetwork.chainId));
-      dispatch(TokenAction.getTokens({chainId: activeNetwork.chainId}));
+      dispatch(AssetAction.list(activeWallet, activeNetwork?.chainId));
+      dispatch(TokenAction.getTokens({chainId: activeNetwork?.chainId}));
     }
     fetchData();
   }, [activeNetwork.chainId, activeWallet, dispatch]);
 
   const formatWalletAddress = address => {
-    const prefix = address.substring(0, 6);
-    const suffix = address.substring(address.length - 4, address.length);
+    const prefix = address?.substring(0, 6);
+    const suffix = address?.substring(address?.length - 4, address?.length);
     return prefix + '...' + suffix;
   };
 
